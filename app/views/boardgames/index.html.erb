@@ -1,0 +1,31 @@
+<h1>Boardgames#index</h1>
+<p>Find me in app/views/boardgames/index.html.erb</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Box Photo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boardgames.each do |boardgame| %>
+    <tr>
+      <th scope="row"><%= boardgame.id %></th>
+      <td><%= image_tag rails_blob_url(boardgame.box_image) %>
+        <%# <!-- <td><%= image_tag boardgame.box_image.last.variant(resize: "50x50") %>
+      <td><%= boardgame.name %></td>
+      <td><%= boardgame.description %></td>
+      <td>
+          <%= link_to 'Show', boardgame %>
+          <%= link_to 'Edit', edit_boardgame_path(boardgame) %>
+          <%= link_to 'Destroy', boardgame , method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+
+
+<%= link_to "Crear Juego", boardgames_new_path %>

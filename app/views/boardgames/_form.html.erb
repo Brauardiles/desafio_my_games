@@ -1,0 +1,41 @@
+<%= form_with(model: @boardgame, local: true) do |form| %>
+<% if @boardgame.errors.any? %>
+  <div class="alert alert-danger" id="error-explanation">
+    <h2><%= pluralize(@boardgame.errors.count, "error") %> Prohibited this boardgame from being saved</h2>
+    <ul>
+      <% @boardgame.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+    <div class="form-group">
+      <%= form.label :name, "Nombre Juego" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description, "Descripción del juego" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :box_image, "Foto Caja" %>
+      <%= form.file_field :box_image, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content_game_images, "Fotos Piezas" %>
+      <%= form.file_field :content_game_images, multiple: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :game_rules, "Reglas o Reglamento (pdf)" %>
+      <%= form.file_field :game_rules, multiple: true %>
+    </div>
+
+    <div class="my-3">
+      <%= form.submit "Create", class:"btn btn-primary" %>
+    </div>
+<% end %>
